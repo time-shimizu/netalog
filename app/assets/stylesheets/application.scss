@@ -15,9 +15,40 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
 
 .navbar-brand{
   font-family: 'Kosugi Maru', sans-serif;
   font-size: 25px ;
   font-weight: bold;
+}
+.top-wrapper{
+  z-index:0;
+  overflow: hidden;
+  color: #FFF ;
+  text-align: center;
+  background-color: rgba(0,0,0,0.4);
+  margin-bottom: 200px;
+}
+.top-wrapper::before{
+  content: '';
+  background-image:  url('/images/mugendai.jpg');
+  height: 500px;
+  background-size: cover ;
+  filter: blur(5px);
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  z-index: -1;
+}
+.top-description{
+  margin-top: 30px;
+}
+
+hr {
+  border-width: 3px ;
+  border-color: #F2F2F2 ;
 }
