@@ -1,16 +1,18 @@
-<div class="container">
-  <section class="top-wrapper">
-    <h1>みんなでネタを評価しあおう！！</h1>
-    <div class="top-description">
-    <p>漫才、コント、ピン芸まで色々なネタを投稿して</p>
-    <p>みんなに見てもらい、意見を貰おう！</p>
+<section class="top-wrapper">
+  <h1>みんなでネタを評価しあおう！！</h1>
+  <div class="top-description">
+  <p>漫才、コント、ピン芸まで色々なネタを投稿して</p>
+  <p>みんなに見てもらい、意見を貰おう！</p>
+  <%= link_to new_user_session_path do %>
     <p><button type="button" class="btn btn-primary navbar-btn">ログイン</button></p>
-    <p><button type="button" class="btn btn-primary navbar-btn">facebookでログイン</button></p>
-    </div>
-  </section>
-  <h2><span class="glyphicon glyphicon-pencil"></span>新着ネタ</h2>
-  <hr>
-  <h2><span class="fa fa-chess-king"></span>人気ネタ</h2>
-  <hr>
-  <h2><span class="fa fa-grin-wink"></span>人気ユーザー</h2>
-</div>
+  <% end %>
+  <%= link_to user_facebook_omniauth_authorize_path do %>
+    <p><button type="button" class="btn btn-primary navbar-btn"><span class="fab fa-facebook"></span> facebookでログイン</button></p>
+  <% end %>
+  </div>
+</section>
+<h2><span class="glyphicon glyphicon-pencil"></span>新着ネタ</h2>
+<hr>
+<h2><span class="fa fa-chess-king"></span>人気ネタ</h2>
+<hr>
+<h2><span class="fa fa-grin-wink"></span>人気ユーザー</h2>
