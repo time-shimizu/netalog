@@ -4,3 +4,7 @@
 <p>
   <iframe width="480" height="270" src="https://www.youtube.com/embed/<%= @micropost.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </p>
+<p><%= @micropost.content %></p>
+<% if @micropost.user == current_user %>
+<p><%= link_to "delete", @micropost, method: :delete,data: { confirm: "削除しますか？" } %></p>
+<% end %>

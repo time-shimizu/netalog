@@ -1,4 +1,7 @@
 class MicropostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
     @microposts = Micropost.all
   end
@@ -9,14 +12,18 @@ class MicropostsController < ApplicationController
   end
 
   def new
-    @micropost = current_user.micropsts.build(micropost_params)
+    @micropost = Micropost.new
+  end
+
+  def create
+    @micropost = current_user.microposts.build(micropost_params)
     youtube_url = params[:micropost][:url]
     youtube_url = youtube_url.last(11)
-    @post.url = youtube_url
+    @micropost.url = youtube_url
 
-    if @post.save
+    if @micropost.save
       flash[:success] = "投稿が完了しました"
-      redirect_to @post
+      redirect_to @micropost
     else
       flash[:danger] = "投稿に失敗しました"
       render "new"
@@ -26,8 +33,33 @@ class MicropostsController < ApplicationController
   def edit
   end
 
+  def update
+    youtube_url = params[:micropost][:url]
+    youtube_url = youtube_url.last(11)
+    @micropost.url = youtube_url
+
+    if @micropost.update_attributes(micropost_params)
+      flash[:success] = "編集が完了しました"
+      redirect_to @micropost
+    else
+      flash[:danger] = "編集に失敗しました"
+      render "edit"
+    end
+  end
+
+  def destroy
+    @micropost.destroy
+    flash[:success] = "投稿を削除しました"
+    redirect_to microposts_path
+  end
   private
+
   def micropost_params
     params.require(:micropost).permit(:content, :url, :title)
+  end
+
+  def correct_user
+    @micropost =Micropost.find(params[:id])
+    redirect_to root_url unless @micropost.user == current_user
   end
 end
