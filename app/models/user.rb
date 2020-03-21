@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable
   validates :profile, length: { maximum: 200 }
   mount_uploader :image, ImageUploader
+  has_many :microposts, dependent: :destroy
 
    def self.find_for_oauth(auth)
      user = User.where(uid: auth.uid, provider: auth.provider).first
