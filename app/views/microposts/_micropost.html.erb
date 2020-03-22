@@ -1,0 +1,12 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <img src=<%= micropost.user.image %> class = "icon_mini_image">
+      <h3><%= micropost.user.name %></h3>
+  </div>
+  <div class="panel-body panel_micropost">
+      <h3><%= micropost.title %></h3>
+      <hr>
+      <h5><%= micropost.content %></h5>
+      <p><iframe width="352" height="198" src="https://www.youtube.com/embed/<%= micropost.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+  </div>
+</div>
