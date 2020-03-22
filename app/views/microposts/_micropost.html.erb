@@ -1,12 +1,20 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-      <img src=<%= micropost.user.image %> class = "icon_mini_image">
-      <h3><%= micropost.user.name %></h3>
-  </div>
+  <%= link_to user_path(current_user) do %>
+    <div class="panel-heading">
+        <img src=<%= micropost.user.image %> class = "icon_mini_image">
+        <h3><%= micropost.user.name %></h3>
+    </div>
+  <% end %>
   <div class="panel-body panel_micropost">
       <h3><%= micropost.title %></h3>
       <hr>
-      <h5><%= micropost.content %></h5>
       <p><iframe width="352" height="198" src="https://www.youtube.com/embed/<%= micropost.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+      <h5><%= micropost.content %></h5>
+      <% if micropost.user == current_user %>
+        <h5>
+          <%= link_to "編集する", edit_micropost_path(micropost) %> |
+          <%= link_to "削除する", micropost, method: :delete, data: {confirm:"本当に削除しますか？"} %>
+        </h5>
+      <% end %>
   </div>
 </div>
