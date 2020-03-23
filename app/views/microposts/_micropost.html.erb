@@ -4,19 +4,16 @@
         <img src=<%= micropost.user.image %> class = "icon_mini_image">
         <h3><%= micropost.user.name %></h3>
       <% end %>
-      <% if micropost.subcategory %>
-        <%= link_to subcategory_path(micropost.subcategory) do %>
-          <button type="button" class="btn btn-default btn-lg">
-            <span class="fas fa-asterisk"></span> <%= "#{micropost.subcategory.category.name}|#{micropost.subcategory.name}" %>
-          </button>
-        <% end %>
+      <%= link_to micropost_path(micropost) do %>
+        <button type="button" class="btn btn-default btn-lg">
+          <span class="far fa-star"></span> <%= average_score(micropost) %>
+        </button>
       <% end %>
     </div>
   <div class="panel-body panel_micropost">
-      <h3><%= micropost.title %></h3>
+      <h3><%=link_to micropost.title, micropost_path(micropost) %></h3>
       <hr>
       <p><iframe width="352" height="198" src="https://www.youtube.com/embed/<%= micropost.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
-      <h5><%= micropost.content %></h5>
       <% if micropost.user == current_user %>
         <h5>
           <%= link_to "編集する", edit_micropost_path(micropost) %> |
