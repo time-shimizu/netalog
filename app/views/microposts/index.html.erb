@@ -1,2 +1,29 @@
-<%= render @microposts %>
-<%= paginate @microposts %>
+<div clas="row">
+  <div class="col-md-3 col-sm-4 col-xs-12 sideBar">
+    <div class="panel panel-primary">
+      <div class="panel-heading">カテゴリー</div>
+      <div class="panel-body">
+        <ul class="nav  side-nav">
+          <% @categories.each do |category| %>
+          <li>
+              <%= category.name %>
+            <ul>
+              <% category.subcategories.each do |subcategory| %>
+                <li>
+                  <%= link_to subcategory_path(subcategory.id) do %>
+                    <%= "#{subcategory.name}(#{subcategory.microposts.count})" %>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9 col-sm-8 col-xs-12">
+    <%= render @microposts %>
+    <%= paginate @microposts %>
+  </div>
+</div>

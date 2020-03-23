@@ -1,8 +1,16 @@
-<h1>Users#show</h1>
-<img src=<%= @user.image %> class = "icon_image">
-<p>名前 : <%= @user.name %></p>
-<p>メールアドレス : <%= @user.email %></p>
-<p>プロフィール : <%= @user.profile %></p>
-<% if @user == current_user %>
-<%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
-<% end %>
+<div clas="row">
+  <div class="col-md-3 col-sm-4 col-xs-12 sideBar user-side">
+    <img src=<%= @user.image %> class = "icon_image">
+    <h3><名前> <br>
+    <%= @user.name %></h3>
+    <h3><プロフィール> </h3>
+    <p><%= @user.profile %></p>
+    <% if @user == current_user %>
+    <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
+    <% end %>
+  </div>
+  <div class="col-md-9 col-sm-8 col-xs-12">
+    <%= render @microposts %>
+    <%= paginate @microposts %>
+  </div>
+</div>

@@ -3,6 +3,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
+    @categories = Category.all
     @microposts = Micropost.page(params[:page]).per(5)
   end
 
