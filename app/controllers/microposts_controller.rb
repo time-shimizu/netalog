@@ -10,6 +10,7 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find(params[:id])
     @user = @micropost.user
+    @score = Score.new
   end
 
   def new
@@ -55,12 +56,12 @@ class MicropostsController < ApplicationController
   end
   private
 
-  def micropost_params
-    params.require(:micropost).permit(:content, :url, :title, :subcategory_id)
-  end
+    def micropost_params
+      params.require(:micropost).permit(:content, :url, :title, :subcategory_id)
+    end
 
-  def correct_user
-    @micropost =Micropost.find(params[:id])
-    redirect_to root_url unless @micropost.user == current_user
-  end
+    def correct_user
+      @micropost =Micropost.find(params[:id])
+      redirect_to root_url unless @micropost.user == current_user
+    end
 end
