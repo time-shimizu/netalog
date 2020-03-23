@@ -6,7 +6,7 @@ module ApplicationHelper
     end
     count = Score.where('micropost_id LIKE ?', "#{micropost.id}").count
     if count != 0
-      (sum/count).round
+      (sum * 1.0/count * 1.0 ).round(1)
     else
       0
     end
