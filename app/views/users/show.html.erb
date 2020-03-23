@@ -1,7 +1,7 @@
 <div clas="row">
   <div class="col-md-3 col-sm-4 col-xs-12 sideBar user-side">
     <img src=<%= @user.image %> class = "icon_image">
-    <% unless current_user == @user && user_signed_in? %>
+    <% unless current_user == @user %>
       <div id="follow_form">
         <% if current_user.following?(@user) %>
           <%= render 'unfollow' %>

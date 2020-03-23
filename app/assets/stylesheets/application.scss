@@ -86,3 +86,8 @@ hr {
   text-align: center;
   border: ridge 10px #F2F2F2;
 }
+.btn-secondary {
+  @include button-variant($btn-default-color,
+                          #BBBBBB,
+                          $btn-default-border);
+}
