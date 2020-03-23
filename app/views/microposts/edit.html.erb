@@ -17,6 +17,11 @@
 </div>
 
 <div class="form-group">
+  <%= f.label :subcategory_id, "カテゴリ" %>
+  <%= f.select :subcategory_id, Subcategory.all.map{|o| ["#{o.category.name}|#{o.name}", o.id]} %>
+</div>
+
+<div class="form-group">
   <%= f.submit "編集を確定", class: 'btn btn-primary' %>
 </div>
 
