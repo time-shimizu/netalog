@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_101646) do
+ActiveRecord::Schema.define(version: 2020_03_23_184107) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2020_03_23_101646) do
     t.index ["subcategory_id"], name: "index_microposts_on_subcategory_id"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "point"
+    t.integer "user_id"
+    t.integer "micropost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id"], name: "index_scores_on_micropost_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "subcategories", force: :cascade do |t|
