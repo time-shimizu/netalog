@@ -16,7 +16,7 @@
 <% if @user == current_user %>
 <p><%= link_to "delete", @micropost, method: :delete,data: { confirm: "削除しますか？" } %></p>
 <% end %>
-<% unless Score.where(user_id: current_user.id, micropost_id: @micropost.id) %>
+<% if Score.where(user_id: current_user.id, micropost_id: @micropost.id).blank? %>
   <%= form_for(@score) do |f| %>
     <div class="form-group">
       <%= f.label :point, "point" %>
