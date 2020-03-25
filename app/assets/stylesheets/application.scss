@@ -65,6 +65,7 @@ hr {
   height: 200px;
   border-radius: 100px;
   object-fit: cover;
+  margin-top: 10px;
 }
 .icon_midium_image{
   width: 80px;
@@ -109,4 +110,13 @@ hr {
 }
 .follow_btn{
   margin: 10px 0;
+}
+.userBox{
+  text-align: center;
+}
+.userBlock{
+  margin-bottom: 10px;
+}
+.postBox{
+  text-align: center;
 }

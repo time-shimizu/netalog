@@ -13,6 +13,41 @@
 </section>
 <h2><span class="glyphicon glyphicon-pencil"></span>新着ネタ</h2>
 <hr>
+<div class="row">
+  <% @new_post.each do |post| %>
+    <div class="col-md-4 col-xs-12 postBlock">
+      <div class="postBox">
+        <%= link_to micropost_path(post) do%>
+          <div class="postCaption">
+            <h3><%= post.title %></h3>
+          </div>
+          <div class="postFrame">
+            <iframe width="288" height="162" src="https://www.youtube.com/embed/<%= post.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
 <h2><span class="fa fa-chess-king"></span>人気ネタ</h2>
 <hr>
 <h2><span class="fa fa-grin-wink"></span>人気ユーザー</h2>
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-md-3 col-sm-6 col-xs-12 userBlock">
+      <div class="userBox">
+        <%= link_to user_path(user) do%>
+          <div class="userImage">
+            <img src=<%= user.image %> class = "icon_image">
+          </div>
+          <div class="userCaption">
+            <h4><%= user.name %></h4>
+            <button class="btn btn-info" type="button">
+            フォロワー <span class="badge" id="followers"><%= user.followers.count %></span>
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
