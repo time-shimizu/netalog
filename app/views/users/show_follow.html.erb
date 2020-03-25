@@ -3,7 +3,11 @@
     <%= render 'user_show' %>
   </div>
   <div class="col-md-8 col-sm-7 col-xs-12">
-    <%= render @microposts %>
-    <%= paginate @microposts %>
+    <% if @users.any? %>
+      <%= render @users %>
+      <%= paginate @users %>
+    <% else %>
+      <h3 class="recommend">友達を見つけましょう</h3>
+    <% end %>
   </div>
 </div>

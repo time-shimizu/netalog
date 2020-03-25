@@ -1,0 +1,8 @@
+<div class="panel panel-default">
+  <%= link_to user_path(user) do%>
+    <div class="panel-body panel-follow">
+      <img src=<%= user.image %> class = "icon_midium_image">
+      <h3><%= user.name %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,25 @@
+<%= link_to user_path(@user) do %>
+  <img src=<%= @user.image %> class = "icon_image">
+<% end %>
+<div class="follow_btn">
+  <%= render 'follow_btn'%>
+</div>
+<div class="stats">
+  <%= link_to followers_user_path(@user) do %>
+    <button class="btn btn-info" type="button">
+    フォロワー <span class="badge"><%= @user.followers.count %></span>
+    </button>
+  <% end %>
+  <%= link_to following_user_path(@user) do %>
+    <button class="btn btn-info" type="button">
+    フォロー <span class="badge"><%= @user.following.count %></span>
+    </button>
+  <% end %>
+</div>
+<h3><名前> <br>
+<%= @user.name %></h3>
+<h3><プロフィール> </h3>
+<p><%= @user.profile %></p>
+<% if @user == current_user %>
+  <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
+<% end %>
