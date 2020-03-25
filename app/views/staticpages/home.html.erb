@@ -14,7 +14,25 @@
 <h2><span class="glyphicon glyphicon-pencil"></span>新着ネタ</h2>
 <hr>
 <div class="row">
-  <% @new_post.each do |post| %>
+  <% @new_post.each do |micropost| %>
+    <div class="col-md-4 col-xs-12 postBlock">
+      <div class="postBox">
+        <%= link_to micropost_path(micropost) do%>
+          <div class="postCaption">
+            <h3><%= micropost.title %></h3>
+          </div>
+          <div class="postFrame">
+            <iframe width="288" height="162" src="https://www.youtube.com/embed/<%= micropost.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<h2><span class="fa fa-chess-king"></span>人気ネタ</h2>
+<hr>
+<div class="row">
+  <% @popular_post.each do |post| %>
     <div class="col-md-4 col-xs-12 postBlock">
       <div class="postBox">
         <%= link_to micropost_path(post) do%>
@@ -24,13 +42,14 @@
           <div class="postFrame">
             <iframe width="288" height="162" src="https://www.youtube.com/embed/<%= post.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
+          <p><button type="button" class="btn btn-default btn-lg">
+            <span class="far fa-star"></span> <%= average_score(post) %>
+          </button></p>
         <% end %>
       </div>
     </div>
   <% end %>
 </div>
-<h2><span class="fa fa-chess-king"></span>人気ネタ</h2>
-<hr>
 <h2><span class="fa fa-grin-wink"></span>人気ユーザー</h2>
 <div class="row">
   <% @users.each do |user| %>

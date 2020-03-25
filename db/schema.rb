@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_211214) do
+ActiveRecord::Schema.define(version: 2020_03_25_150749) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_211214) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "subcategory_id"
+    t.integer "averagescore"
     t.index ["subcategory_id"], name: "index_microposts_on_subcategory_id"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"

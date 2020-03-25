@@ -4,7 +4,7 @@ class MicropostsController < ApplicationController
 
   def index
     @categories = Category.all
-    @microposts = Micropost.page(params[:page]).per(5)
+    @microposts = Micropost.all.order('created_at desc').page(params[:page]).per(5)
   end
 
   def show
@@ -18,7 +18,7 @@ class MicropostsController < ApplicationController
   end
 
   def search
-    @microposts = Micropost.search(params[:search]).page(params[:page]).per(5)
+    @microposts = Micropost.search(params[:search]).order('created_at desc').page(params[:page]).per(5)
     @categories = Category.all
     render "microposts/index"
   end

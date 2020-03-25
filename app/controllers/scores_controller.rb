@@ -8,6 +8,8 @@ class ScoresController < ApplicationController
 
     if score.save
       flash[:success] = "採点しました"
+      @micropost.averagescore = average_score(@micropost)
+      @micropost.save
       redirect_to @micropost
     else
       flash[:danger] = "失敗しました"
@@ -21,5 +23,18 @@ class ScoresController < ApplicationController
   private
    def score_params
      params.require(:score).permit(:point)
+   end
+
+   def average_score(micropost)
+     sum = 0
+     micropost.scores.each do |score|
+       sum += score.point
+     end
+     count = Score.where('micropost_id LIKE ?', "#{micropost.id}").count
+     if count != 0
+       (sum * 1.0/count * 1.0 ).round(1)
+     else
+       0
+     end
    end
 end
