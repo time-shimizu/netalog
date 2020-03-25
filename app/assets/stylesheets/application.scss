@@ -90,7 +90,10 @@ hr {
 }
 .user-side{
   text-align: center;
-  border: ridge 10px #F2F2F2;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px #000000;
+  border-radius: 10px;
 }
 .btn-secondary {
   @include button-variant($btn-default-color,
