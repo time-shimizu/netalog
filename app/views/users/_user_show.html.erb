@@ -7,12 +7,12 @@
 <div class="stats">
   <%= link_to followers_user_path(@user) do %>
     <button class="btn btn-info" type="button">
-    フォロワー <span class="badge"><%= @user.followers.count %></span>
+    フォロワー <span class="badge" id="followers"><%= @user.followers.count %></span>
     </button>
   <% end %>
   <%= link_to following_user_path(@user) do %>
     <button class="btn btn-info" type="button">
-    フォロー <span class="badge"><%= @user.following.count %></span>
+    フォロー <span class="badge" id="following" ><%= @user.following.count %></span>
     </button>
   <% end %>
 </div>
