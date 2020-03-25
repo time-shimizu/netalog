@@ -17,6 +17,12 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.new
   end
 
+  def search
+    @microposts = Micropost.search(params[:search]).page(params[:page]).per(5)
+    @categories = Category.all
+    render "microposts/index"
+  end
+
   def create
     @micropost = current_user.microposts.build(micropost_params)
     youtube_url = params[:micropost][:url]
