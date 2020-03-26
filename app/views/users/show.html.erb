@@ -1,6 +1,8 @@
 <div clas="row">
-  <div class="col-md-4 col-sm-5 col-xs-12 sideBar user-side">
-    <%= render 'user_show' %>
+  <div class="col-md-4 col-sm-5 col-xs-12 sideBar">
+    <div class="user-side">
+      <%= render 'user_show' %>
+    </div>
   </div>
   <div class="col-md-8 col-sm-7 col-xs-12">
     <%= render @microposts %>

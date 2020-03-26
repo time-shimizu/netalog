@@ -21,5 +21,10 @@
 <h3><プロフィール> </h3>
 <p><%= @user.profile %></p>
 <% if @user == current_user %>
+  <div class="new-post-btn">
+    <%= link_to new_micropost_path do %>
+      <p><button type="button" class="btn btn-success">動画を投稿する</button></p>
+    <% end %>
+  </div>
   <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
 <% end %>
