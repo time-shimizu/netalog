@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :subcategories, only: [:show]
   resources :scores, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :replies, only: [:create, :destroy]
 end

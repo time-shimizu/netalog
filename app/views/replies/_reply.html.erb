@@ -1,9 +1,12 @@
 <div class="panel panel-default">
   <div class="panel-heading reply-heading">
     <img src=<%= reply.user.image %> class = "icon_mini_image">
-    <h4><%= reply.user.name %></h4>
+    <h3><%= reply.user.name %></h3>
   </div>
   <div class="panel-body panel_micropost">
     <h4><%= reply.content %></h4>
+    <% if reply.user == current_user %>
+     <%= link_to "削除する", reply, method: :delete, data: {confirm:"本当に削除しますか？"} %>
+    <% end %>
   </div>
 </div>

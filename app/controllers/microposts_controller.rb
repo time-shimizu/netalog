@@ -11,7 +11,8 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     @user = @micropost.user
     @score = Score.new
-    @replies = @micropost.replies
+    @reply = Reply.new
+    @replies = @micropost.replies.page(params[:page]).per(5)
   end
 
   def new
