@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_150749) do
+ActiveRecord::Schema.define(version: 2020_03_27_100626) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2020_03_25_150749) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.string "content"
+    t.integer "micropost_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["micropost_id", "created_at"], name: "index_replies_on_micropost_id_and_created_at"
+    t.index ["micropost_id"], name: "index_replies_on_micropost_id"
   end
 
   create_table "scores", force: :cascade do |t|
