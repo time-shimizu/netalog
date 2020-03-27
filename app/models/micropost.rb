@@ -5,6 +5,7 @@ class Micropost < ApplicationRecord
   belongs_to :user
   belongs_to :subcategory
   has_many :scores, dependent: :destroy
+  has_many :replies, dependent: :destroy
 
   def self.search(search)
     if search

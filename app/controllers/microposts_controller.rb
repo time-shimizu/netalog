@@ -11,6 +11,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.find(params[:id])
     @user = @micropost.user
     @score = Score.new
+    @replies = @micropost.replies
   end
 
   def new

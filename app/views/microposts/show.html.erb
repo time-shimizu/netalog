@@ -1,32 +1,36 @@
-<img src=<%= @user.image %> class = "icon_image">
-<h1><%= @user.name %></h1>
-<h1><%= @micropost.title %></h1>
-<% if @micropost.subcategory %>
-  <button type="button" class="btn btn-default btn-lg">
-    <span class="fas fa-asterisk"></span> <%= "#{@micropost.subcategory.category.name}|#{@micropost.subcategory.name}" %>
-  </button>
-<% end %>
-<button type="button" class="btn btn-default btn-lg">
-  <span class="far fa-star"></span> <%= average_score(@micropost) %>
-</button>
-<p>
-  <iframe width="480" height="270" src="https://www.youtube.com/embed/<%= @micropost.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</p>
-<p><%= @micropost.content %></p>
-<% if @user == current_user %>
-<p><%= link_to "delete", @micropost, method: :delete,data: { confirm: "削除しますか？" } %></p>
-<% end %>
-<% if Score.where(user_id: current_user.id, micropost_id: @micropost.id).blank? %>
-  <%= form_for(@score) do |f| %>
-    <div class="form-group">
-      <%= f.label :point, "point" %>
-      <%= f.select :point, (1..5).to_a.map{|i| ["#{i}",i]} %>
-    </div>
-
-    <%= hidden_field_tag :micropost_id, @micropost.id %>
-
-    <div class="form-group">
-      <%= f.submit "採点する", class: 'btn btn-primary' %>
-    </div>
-  <% end %>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading reply-heading">
+    <img src=<%= @user.image %> class = "icon_mini_image">
+    <h3><%= @user.name %></h3>
+    <button type="button" class="btn btn-default btn-lg">
+      <span class="far fa-star"></span> <%= average_score(@micropost) %>
+    </button>
+    <% if @micropost.subcategory %>
+      <button type="button" class="btn btn-default btn-lg">
+        <span></span> <%= "#{@micropost.subcategory.category.name}|#{@micropost.subcategory.name}" %>
+      </button>
+    <% end %>
+  </div>
+  <div class="panel-body panel_micropost">
+    <h1><%= @micropost.title %></h1>
+    <hr>
+    <p>
+      <iframe width="448" height="252" src="https://www.youtube.com/embed/<%= @micropost.url%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </p>
+    <h4><%= @micropost.content %></h4>
+    <hr>
+    <% if Score.where(user_id: current_user.id, micropost_id: @micropost.id).blank? %>
+      <%= form_for(@score) do |f| %>
+        <div class="form-group">
+          <%= f.label :point, "point" %>
+          <%= f.select :point, (1..5).to_a.map{|i| ["#{i}",i]} %>
+        </div>
+        <%= hidden_field_tag :micropost_id, @micropost.id %>
+        <div class="form-group">
+          <%= f.submit "採点する", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<%= render @replies %>
