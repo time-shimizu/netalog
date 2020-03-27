@@ -1,4 +1,14 @@
 module ApplicationHelper
+
+  def full_title(page_title)
+    base_title = "わらログ"
+    if page_title.blank?
+      base_title
+    else
+      "#{page_title} | #{base_title}"
+    end
+  end
+
   def average_score(micropost)
     sum = 0
     micropost.scores.each do |score|
