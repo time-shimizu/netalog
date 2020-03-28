@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def sample
     sample_user = User.find_by(name: "サンプルユーザー")
     sign_in sample_user
+    flash[:success] = "サンプルユーザーでのログインに成功しました"
     redirect_to sample_user
   end
 end
