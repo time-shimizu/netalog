@@ -5,12 +5,12 @@
       <img src=<%= @user.image %> class = "icon_mini_image">
       <h3><%= @user.name %></h3>
     <% end %>
-    <button type="button" class="btn btn-default btn-lg">
+    <button type="button" class="btn btn-default btn-sm">
       <span class="far fa-star"></span> <%= average_score(@micropost) %>
     </button>
     <% if @micropost.subcategory %>
       <%= link_to @micropost.subcategory do %>
-        <button type="button" class="btn btn-default btn-lg">
+        <button type="button" class="btn btn-default btn-sm">
           <span></span> <%= "#{@micropost.subcategory.category.name}|#{@micropost.subcategory.name}" %>
         </button>
       <% end %>
