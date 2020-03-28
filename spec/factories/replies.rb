@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :reply do
     content "MyString"
-    micropost nil
+    association :user
+    association :micropost
   end
 end

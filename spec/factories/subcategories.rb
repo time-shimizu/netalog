@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :subcategory do
     name "MyString"
-    category nil
+    association :category
   end
 end

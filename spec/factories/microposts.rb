@@ -3,6 +3,6 @@ FactoryBot.define do
     title "MyString"
     content "MyText"
     url "MyString"
-    user nil
+    association :user
   end
 end
