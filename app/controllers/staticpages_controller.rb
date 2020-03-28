@@ -4,4 +4,13 @@ class StaticpagesController < ApplicationController
     @new_post = Micropost.all.order('created_at desc').take(3)
     @popular_post = Micropost.all.order('averagescore desc').take(3)
   end
+
+  def help
+  end
+
+  def terms
+  end
+
+  def contact
+  end
 end
