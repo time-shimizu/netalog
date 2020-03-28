@@ -15,4 +15,10 @@ class UsersController < ApplicationController
     @users = @user.followers.page(params[:page]).per(10)
     render 'show_follow'
   end
+
+  def sample
+    sample_user = User.find_by(name: "サンプルユーザー")
+    sign_in sample_user
+    redirect_to sample_user
+  end
 end

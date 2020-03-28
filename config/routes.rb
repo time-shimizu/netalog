@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/terms", to: "staticpages#terms"
   get "/contact", to: "staticpages#contact"
   get "/search", to: "microposts#search"
+  get "/sample", to: "users#sample"
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   resources :users, only: [:show, :following, :followers] do
     member do

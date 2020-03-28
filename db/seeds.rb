@@ -19,3 +19,9 @@ cate3.subcategories.create!(name: "その他")
 cate4.subcategories.create!(name: "企画")
 cate4.subcategories.create!(name: "ドッキリ")
 cate4.subcategories.create!(name: "その他")
+
+User.create!(name: "サンプルユーザー",
+             email: "sample@example.com",
+             password: "password",
+             image: File.open("./public/images/irasutoya1.png"),
+             profile: "テストユーザーです")
