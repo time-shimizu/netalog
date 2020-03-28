@@ -5,8 +5,14 @@
       <%= render 'user_show' %>
     </div>
   </div>
-  <div class="col-md-8 col-sm-7 col-xs-12">
-    <%= render @microposts %>
-    <%= paginate @microposts %>
-  </div>
+  <% if @microposts.any? %>
+    <div class="col-md-8 col-sm-7 col-xs-12">
+      <%= render @microposts %>
+      <%= paginate @microposts %>
+    </div>
+  <% else %>
+    <div class="non">
+      <h3>まだ投稿がありません</h3>
+    </div>
+  <% end %>
 </div>

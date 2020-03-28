@@ -1,4 +1,10 @@
+<% if @infos.any? %>
 <ul>
   <%= render @infos %>
 </ul>
 <%= paginate @infos %>
+<% else %>
+<div class="non">
+  <h3>まだ通知がありません</h3>
+</div>
+<% end %>
