@@ -15,6 +15,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "マイページ", user_path(current_user) %></li>
           <li><%= link_to "動画一覧", microposts_path %></li>
+          <li><%= link_to "通知", infos_path %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         </ul>
       <% else %>

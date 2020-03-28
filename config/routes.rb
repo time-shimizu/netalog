@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :scores, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :replies, only: [:create, :destroy]
+  resources :infos, only: :index
 end

@@ -7,6 +7,8 @@ class RepliesController < ApplicationController
     micropost = Micropost.find(params[:micropost_id])
     reply.micropost_id = micropost.id
     if reply.save
+      user = micropost.user
+      user.infos.create(action_user_id: current_user.id, micropost_id: micropost.id)
       redirect_to micropost
     else
       flash[:danger] = "返信内容を入力してください"

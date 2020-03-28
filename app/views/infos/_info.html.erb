@@ -1,0 +1,19 @@
+<li>
+<% action_user = User.find(info.action_user_id) %>
+<% if info.micropost_id.nil? %>
+  <h3>
+    <img src=<%= action_user.image %> class = "icon_mini_image">
+    <%= link_to action_user.name, action_user %>
+    があなたをフォローしました
+  </h3>
+<% else %>
+  <h3>
+    <img src=<%= action_user.image %> class = "icon_mini_image">
+    <%= link_to action_user.name, action_user %>
+    があなたの
+    <%= link_to "投稿", Micropost.find(info.micropost_id) %>
+    にコメントしました
+  </h3>
+<% end %>
+<hr>
+</li>
