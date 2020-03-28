@@ -28,35 +28,42 @@
       </h5>
     <% end %>
     <hr>
-    <div class="row">
-      <div class="col-xs-8">
-        <%= form_for(@reply) do |f| %>
-          <div class="form-group">
-            <%= f.text_field :content, autofocus: true, class: "form-control" %>
-          </div>
-          <%= hidden_field_tag :micropost_id, @micropost.id %>
-          <div class="form-group">
-            <%= f.submit "返信する", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      </div>
-      <div class="col-xs-4">
-        <% if Score.where(user_id: current_user.id, micropost_id: @micropost.id).blank? %>
-          <%= form_for(@score) do |f| %>
+    <% if user_signed_in? %>
+      <div class="row">
+        <div class="col-xs-8">
+          <%= form_for(@reply) do |f| %>
             <div class="form-group">
-              <%= f.label :point, "point" %>
-              <%= f.select :point, (1..5).to_a.map{|i| ["#{i}",i]} %>
+              <%= f.text_field :content, autofocus: true, class: "form-control" %>
             </div>
             <%= hidden_field_tag :micropost_id, @micropost.id %>
             <div class="form-group">
-              <%= f.submit "採点する", class: 'btn btn-primary' %>
+              <%= f.submit "返信する", class: 'btn btn-primary' %>
             </div>
           <% end %>
-        <% else %>
-         <h4>採点済み</h4>
-        <% end %>
+        </div>
+        <div class="col-xs-4">
+          <% if Score.where(user_id: current_user.id, micropost_id: @micropost.id).blank? %>
+            <%= form_for(@score) do |f| %>
+              <div class="form-group">
+                <%= f.label :point, "point" %>
+                <%= f.select :point, (1..5).to_a.map{|i| ["#{i}",i]} %>
+              </div>
+              <%= hidden_field_tag :micropost_id, @micropost.id %>
+              <div class="form-group">
+                <%= f.submit "採点する", class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          <% else %>
+           <h4>採点済み</h4>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% else %>
+    <h3>
+      <%= link_to "ログイン", new_user_session_path %>
+      することで動画への返信、採点が可能です
+    </h3>
+    <% end %>
   </div>
 </div>
 <div class="row">

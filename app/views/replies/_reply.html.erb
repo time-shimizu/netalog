@@ -1,7 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading reply-heading">
-    <img src=<%= reply.user.image %> class = "icon_mini_image">
-    <h3><%= reply.user.name %></h3>
+    <%= link_to reply.user do %>
+      <img src=<%= reply.user.image %> class = "icon_mini_image">
+      <h3><%= reply.user.name %></h3>
+    <% end %>
   </div>
   <div class="panel-body panel_micropost">
     <h4><%= reply.content %></h4>

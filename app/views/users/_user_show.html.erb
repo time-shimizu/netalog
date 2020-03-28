@@ -1,9 +1,11 @@
 <%= link_to user_path(@user) do %>
   <img src=<%= @user.image %> class = "icon_image">
 <% end %>
-<div class="follow_btn">
-  <%= render 'follow_btn'%>
-</div>
+<% if user_signed_in? %>
+  <div class="follow_btn">
+    <%= render 'follow_btn'%>
+  </div>
+<% end %>
 <div class="stats">
   <%= link_to followers_user_path(@user) do %>
     <button class="btn btn-info" type="button">
