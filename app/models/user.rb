@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable
   validates :profile, length: { maximum: 200 }
+  validates :name, presence: true
   mount_uploader :image, ImageUploader
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
