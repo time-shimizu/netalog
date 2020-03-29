@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let!(:user) {create(:user)}
+  let!(:other_user) {create(:user)}
+  let!(:subcategory) {create(:subcategory)}
+  let!(:micropost) {create(:micropost, user: user, subcategory: subcategory)}
+  let!(:reply) {create(:reply, user: user, micropost: micropost)}
+  let!(:relationship) {create(:relationship, follower_id: user.id, followed_id: other_user.id)}
+  let!(:info) {create(:info, user: user, action_user_id: other_user.id)}
 
   it "email,passwordがあればユーザーが有効である" do
     expect(user).to be_valid
@@ -56,5 +62,21 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:profile]).to include("は200文字以内で入力してください")
     end
+  end
+
+  it "userが削除された時micropostも削除される" do
+    expect{user.destroy}.to change{Micropost.count}.by(-1)
+  end
+
+  it "userが削除された時userのrelationも削除される" do
+    expect{user.destroy}.to change{Relationship.count}.by(-1)
+  end
+
+  it "userが削除された時userのreplyも削除される" do
+    expect{user.destroy}.to change{Reply.count}.by(-1)
+  end
+
+  it "userが削除された時userのinfoも削除される" do
+    expect{user.destroy}.to change{Info.count}.by(-1)
   end
 end
