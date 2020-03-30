@@ -30,7 +30,7 @@ class ScoresController < ApplicationController
      micropost.scores.each do |score|
        sum += score.point
      end
-     count = Score.where('micropost_id LIKE ?', "#{micropost.id}").count
+     count = Score.where('cast(micropost_id as text) LIKE ?', "#{micropost.id}").count
      if count != 0
        (sum * 1.0/count * 1.0 ).round(1)
      else
