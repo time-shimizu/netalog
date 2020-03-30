@@ -28,5 +28,9 @@
       <p><button type="button" class="btn btn-success">動画を投稿する</button></p>
     <% end %>
   </div>
-  <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
+  <% unless current_user == User.find(1) %>
+    <%= link_to "プロフィール編集", edit_user_registration_path(current_user.id) %>
+  <% else %>
+    <p>サンプルユーザーはプロフィールの編集ができません</p>
+  <% end %>
 <% end %>
