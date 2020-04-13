@@ -5,7 +5,7 @@
       <%= render 'user_show' %>
     </div>
   </div>
-  <% if @microposts.any? %>
+  <% if @microposts.present? %>
     <div class="col-md-8 col-sm-7 col-xs-12">
       <%= render @microposts %>
       <%= paginate @microposts %>

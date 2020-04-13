@@ -10,10 +10,7 @@ module ApplicationHelper
   end
 
   def average_score(micropost)
-    sum = 0
-    micropost.scores.each do |score|
-      sum += score.point
-    end
+    sum = micropost.scores.sum(&:point)
     count = Score.where('cast(micropost_id as text) LIKE ?', "#{micropost.id}").count
     if count != 0
       (sum * 1.0/count * 1.0 ).round(1)
